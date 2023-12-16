@@ -1,0 +1,79 @@
+﻿@page
+@model TestesDePerformance1.Pages.EditModel
+
+<div class="row pt-5">
+    <div class="col-md-4">
+        <form method="post">
+            <h4>Alteração de instrumento</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Guitar.Id" />
+
+            <div class="form-group">
+                <label asp-for="Guitar.Nome" class="control-label"></label>
+                <input asp-for="Guitar.Nome" class="form-control" />
+                <span asp-validation-for="Guitar.Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Guitar.Descricao" class="control-label"></label>
+                <input asp-for="Guitar.Descricao" class="form-control" />
+                <span asp-validation-for="Guitar.Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Guitar.ImagemUri" class="control-label"></label>
+                <input asp-for="Guitar.ImagemUri" class="form-control" />
+                <span asp-validation-for="Guitar.ImagemUri" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Guitar.Preco" class="control-label"></label>
+                <input asp-for="Guitar.Preco" class="form-control" />
+                <span asp-validation-for="Guitar.Preco" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Guitar.Cordas" class="control-label"></label>
+                <input asp-for="Guitar.Cordas" class="form-control" />
+                <span asp-validation-for="Guitar.Cordas" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3 mb-3">
+                <input class="form-check-input" asp-for="Guitar.EntregaExpressa" />
+                <label asp-for="Guitar.EntregaExpressa"></label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Guitar.DataCadastro" class="control-label"></label>
+                <input asp-for="Guitar.DataCadastro" class="form-control" />
+                <span asp-validation-for="Guitar.DataCadastro" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3 mb-3">
+                <label asp-for="Guitar.MarcaId" class="control-label"></label>
+                <select class="form-select" asp-for="Guitar.MarcaId"
+                        asp-items="Model.BrandOptions">
+                    <option value="">Selecione uma opção</option>
+                </select>
+                <span asp-validation-for="Guitar.MarcaId" class="text-danger">
+                </span>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Excluir" class="btn btn-danger"
+                asp-page-handler="Exclusao" />
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

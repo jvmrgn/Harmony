@@ -1,0 +1,44 @@
+﻿@page "/guitar/{slug}/{id:int:min(1)}"
+@model TestesDePerformance1.Pages.DetailsModel
+
+<h2 class="my-3">@Model.Guitarra.Nome</h2>
+
+<div class="row">
+
+    <div class="col-4">
+        <img class="img-fluid rounded" src="@Model.Guitarra.ImagemUri">
+    </div>
+
+    <div class="col-6">
+        <h4 class="my-3">Sobre:</h4>
+        <p>@Model.Guitarra.Descricao</p>
+        <h4 class="my-3">Mais Info:</h4>
+        <ul>
+            <li>
+                <label asp-for="Guitarra.Preco"></label>:
+                @Html.DisplayFor(model => model.Guitarra.Preco)
+            </li>
+            <li>
+                <label asp-for="Guitarra.EntregaExpressa"></label>:
+                @Html.DisplayFor(model => model.Guitarra.EntregaExpressaFormatada)
+            </li>
+            <li>
+                <label asp-for="Guitarra.DataCadastro"></label>:
+                @Html.DisplayFor(model => model.Guitarra.DataCadastro)
+            </li>
+                <li>
+                    <label asp-for="Guitarra.MarcaId"></label>:
+                    @Html.DisplayFor(model => model.NomeMarca)
+                </li>
+            <li>
+                <label asp-for="Guitarra.Cordas"></label>:
+                @Html.DisplayFor(model => model.Guitarra.Cordas)
+            </li>
+        </ul>
+        @if (User.Identity.IsAuthenticated) {       
+           <a class="btn my-3 btn-primary"
+           asp-page="/Edit" asp-route-id="@Model.Guitarra.Id">Editar</a>}
+
+    </div>
+
+</div>
